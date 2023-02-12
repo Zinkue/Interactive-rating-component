@@ -1,0 +1,220 @@
+/* Variables */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+
+:root {
+    --orange: hsl(25, 97%, 53%);
+    --white: hsl(0, 0%, 100%);
+    --light-grey: hsl(216, 12%, 54%);
+    --medium-grey: hsl(216, 12%, 22%);
+    --dark-blue: hsl(213, 19%, 18%);
+    --very-dark-blue: hsl(216, 12%, 8%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+/* Common components */
+body {
+    background-color: var(--very-dark-blue);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.component {
+    background-color: var(--dark-blue);
+    width: 90vw;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 1rem;
+}
+
+.main-topic {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 700;
+}
+
+.description {
+    color: var(--light-grey);
+    margin: 0;
+    font-family: 'Overpass', sans-serif;
+}
+
+/* Rating state */
+#star-icon {
+    background-image: url(images/icon-star.svg);
+    background-color: var(--medium-grey);
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    width: 2rem;
+    aspect-ratio: 1 / 1;
+    transition: background-color 0.1s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#star-icon:hover {
+    transform: scale(2);
+    background-color: transparent;
+}
+
+#form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.input-score {
+    display: none;
+}
+
+.label-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--medium-grey);
+    border-radius: 50%;
+    width: 2rem;
+    aspect-ratio: 1 / 1;
+    color: var(--light-grey);
+    justify-self: center;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-family: 'Overpass', sans-serif;
+}
+
+.input-score:checked + .label-score {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.label-score:hover {
+    background-color: var(--light-grey);
+    color: var(--white);
+    cursor: pointer;
+}
+
+#submit {
+    grid-column: 1 / 6;
+    border-radius: 1rem;
+    height: 2rem;
+    padding: 0;
+    background-color: var(--orange);
+    color: var(--white);
+    border: 0;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    font-family: 'Overpass', sans-serif;
+}
+
+#submit:hover {
+    background-color: var(--white);
+    color: var(--orange);
+    cursor: pointer;
+}
+
+#no-score-imputed {
+    display: none;
+    color: #E34207;
+    align-self: center;
+    animation: error 1s ease-in-out 1;
+    font-family: 'Overpass', sans-serif;
+    font-weight: 700;
+}
+
+@keyframes error {
+    20% {
+        transform: translate(-0.5rem, 0);
+    }
+
+    40% {
+        transform: translate(0.5rem, 0);
+    }
+
+    60% {
+        transform: translate(-0.5rem, 0);
+    }
+
+    80% {
+        transform: translate(0.5rem, 0);
+    }
+}
+
+/* Thank you state */
+#thank-you {
+    display: none;
+    align-items: center;
+}
+
+#thank_you-icon {
+    background-image: url(images/illustration-thank-you.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    aspect-ratio: 3 / 1;
+}
+
+#received-score {
+    color: var(--orange);
+    background-color: var(--medium-grey);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-family: 'Overpass', sans-serif;
+}
+
+#thank-you .description {
+    text-align: center;
+}
+
+/* Footer */
+#attribution {
+    color: var(--white);
+    font-family: 'Overpass', sans-serif;
+}
+
+#attribution a {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+/* Media queries */
+@media (min-width: 375px) {
+    #star-icon {
+        width: 40px;
+    }
+
+    #submit {
+        height: 40px;
+    }
+
+    .label-score {
+        width: 40px;
+    }
+}
+
+@media (max-width: 375px) {
+    html {
+        font-size: 14px;
+    }
+
+    #no-score-imputed {
+        font-size: 11px;
+    }
+
+    #attribution {
+        font-size: 12px;
+    }
+}
