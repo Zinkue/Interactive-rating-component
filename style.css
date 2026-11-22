@@ -9,6 +9,25 @@
     --medium-grey: hsl(216, 12%, 22%);
     --dark-blue: hsl(213, 19%, 18%);
     --very-dark-blue: hsl(216, 12%, 8%);
+
+    /* Theme tokens (dark by default) */
+    --bg: var(--very-dark-blue);
+    --card: var(--dark-blue);
+    --chip: var(--medium-grey);
+    --text: var(--white);
+    --muted: var(--light-grey);
+    --hover-bg: var(--white);
+    color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+    --bg: hsl(216, 25%, 93%);
+    --card: var(--white);
+    --chip: hsl(216, 20%, 90%);
+    --text: var(--very-dark-blue);
+    --muted: hsl(216, 12%, 40%);
+    --hover-bg: var(--dark-blue);
+    color-scheme: light;
 }
 
 * {
@@ -21,7 +40,7 @@ html {
 
 /* Common components */
 body {
-    background-color: var(--very-dark-blue);
+    background-color: var(--bg);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -31,7 +50,7 @@ body {
 }
 
 .component {
-    background-color: var(--dark-blue);
+    background-color: var(--card);
     width: 90vw;
     max-width: 400px;
     display: flex;
@@ -42,14 +61,14 @@ body {
 }
 
 .main-topic {
-    color: var(--white);
+    color: var(--text);
     font-size: 1.5rem;
     font-family: 'Overpass', sans-serif;
     font-weight: 700;
 }
 
 .description {
-    color: var(--light-grey);
+    color: var(--muted);
     margin: 0;
     font-family: 'Overpass', sans-serif;
 }
@@ -57,7 +76,7 @@ body {
 /* Rating state */
 #star-icon {
     background-image: url(images/icon-star.svg);
-    background-color: var(--medium-grey);
+    background-color: var(--chip);
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
@@ -86,11 +105,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--medium-grey);
+    background-color: var(--chip);
     border-radius: 50%;
     width: 2rem;
     aspect-ratio: 1 / 1;
-    color: var(--light-grey);
+    color: var(--muted);
     justify-self: center;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
     font-family: 'Overpass', sans-serif;
@@ -120,7 +139,7 @@ body {
 }
 
 #submit:hover {
-    background-color: var(--white);
+    background-color: var(--hover-bg);
     color: var(--orange);
     cursor: pointer;
 }
@@ -152,6 +171,26 @@ body {
     }
 }
 
+/* Theme toggle */
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--chip);
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--orange);
+}
+
 /* Thank you state */
 #thank-you {
     display: none;
@@ -169,7 +208,7 @@ body {
 
 #received-score {
     color: var(--orange);
-    background-color: var(--medium-grey);
+    background-color: var(--chip);
     border-radius: 1rem;
     padding: 0.5rem;
     font-family: 'Overpass', sans-serif;
@@ -181,7 +220,7 @@ body {
 
 /* Footer */
 #attribution {
-    color: var(--white);
+    color: var(--text);
     font-family: 'Overpass', sans-serif;
 }
 
